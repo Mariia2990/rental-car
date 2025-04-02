@@ -1,0 +1,131 @@
+.noCarsText{
+    text-align: center;
+        color: #6C717B;
+        padding: 20px;
+}
+
+.carCard{
+        width: 276px;
+}
+
+.carCard img {
+    border-radius: 14px;
+    overflow: hidden;
+    width: 276px;
+    height: 268px;
+    text-align: left;
+}
+
+.carList {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+.textForCar{
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.textForCarPrice{
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+        font-size: 12px;
+        line-height: 133%;
+        color: #6C717B;
+}
+
+.icon {
+    width: 16px;
+    height: 15px;
+    cursor: pointer;
+    fill: #F2F4F7;
+}
+
+.favoriteIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    z-index: 1;
+}
+
+.readMoreBtn {
+    display: block;
+    width: 276px;
+    height: 44px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 12px;
+    border-radius: 12px;
+    margin-top: 28px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.readMoreBtn:hover {
+    background-color: #0b44cd;
+}
+
+.brand {
+    color: #101828;
+}
+
+.model {
+    color: #3470ff;
+}
+
+.year {
+    color: #101828;
+}
+
+.price {
+    /* font-weight: bold; */
+    color: #101828;
+    margin: 0 10px 0 0;
+    text-align: right;
+}
+
+.carInfo{
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 8px;
+        margin-top: 16px;
+}
+
+
+.carInfoTitle {
+ font-family: 'Manrope',
+ sans-serif;
+ font-size: 16px;
+ font-weight: 500;
+ line-height: 125%;
+ text-align: left;
+ margin: 0;
+}
+
+.mileage{
+        color: #8d929a;
+        font-weight: 400;
+            font-size: 12px;
+            line-height: 133%;
+            width: 276px;
+            height: 40px;
+}

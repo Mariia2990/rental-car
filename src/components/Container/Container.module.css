@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    max-width: 320px;
+    min-height: 100vh;
+    /* padding: 0 16px; */
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 375px) {
+    .container {
+        max-width: 375px;
+
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        /* padding: 0 32px; */
+        /* flex-direction: row; */
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .container {
+        max-width: 1440px;
+        /* flex-direction: row; */
+    }
+}

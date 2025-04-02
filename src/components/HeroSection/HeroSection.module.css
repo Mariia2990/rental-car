@@ -1,0 +1,111 @@
+.container{
+    /* display: flex; */
+    width: 100%;
+ height: 700px;   
+background-image: url('/img/hero-2x.jpg');
+background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 15px ;
+  padding-left: 50px;
+  padding-right: 50px ;
+} 
+
+.textWS{
+font-family: var(--main-font);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    text-align: center;
+    color: var(--main-text);
+}
+
+.titleHP{
+font-family: var(--main-font);
+font-size: 30px;
+color: #fff;
+font-weight: 700;
+text-align: center;
+}
+
+.titleBox{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 436px;
+}
+
+.btnHP{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px 79px;
+    width: 176px;
+    height: 34px;
+    color: var(--main-text);
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 105%;
+        background-color: #3470FF;
+}
+
+.btnHP:hover,
+.btnHP:focus {
+background-color: #0B44CD;
+}
+
+.btnBox{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.titleWSBox{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+            background-image: url('/img/hero-2x.jpg');
+            padding-top: 15px;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+    
+        .textWS {
+                font-size: 24px;
+                line-height: 133%;
+        }
+
+        .titleHP{
+            font-size: 50px;
+        }
+
+        .titleBox {
+        }
+
+        .btnHP {
+border-radius: 12px;
+    width: 276px;
+    height: 44px;
+        font-size: 16px;
+        line-height: 125%;
+        }
+
+        .btnBox {
+            margin-top: 40px;
+        }
+
+                .titleWSBox {
+                    gap: 16px;
+                }
+}
+
+@media only screen and (min-width: 1440px) {
+
+}

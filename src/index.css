@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
+@import url("./App.css");
+@import url('modern-normalize');
+
+:root {
+  --main-font: "Manrope", sans-serif;
+  --second-font: "Inter", sans-serif;
+  --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --accent-text: #000;
+  --main-text: #fff;
+  --background: #fff;
+  --main-white: #ffffff;
+}
+
+body {
+  font-family: var(--main-font);
+  background-color: #ffffff;
+}

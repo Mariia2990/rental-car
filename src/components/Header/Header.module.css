@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 26px 120px;
+    background-color: #F2F4F7;
+}
+
+.buttons {
+    display: none;
+}
+
+.btn {
+    background-color: transparent;
+    font-weight: 500;
+        font-size: 12px;
+        line-height: 100%;
+        text-align: center;
+        color: var(--accent-text)
+}
+
+.btn:hover,
+.btn:focus {
+    color: #0B44CD;
+}
+
+@media only screen and (min-width: 768px) {
+    .buttons {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+.btn {
+    font-size: 16px;
+    line-height: 125%;
+}
+}
