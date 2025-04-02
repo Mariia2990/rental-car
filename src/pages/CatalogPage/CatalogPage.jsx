@@ -1,44 +1,102 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCars } from "../../redux/Cars/operations.js"; 
+import { fetchCars } from "../../redux/Cars/operations.js";
 import CarList from "../../components/CarList/CarList";
 import Container from "../../components/Container/Container";
 import SearchCarForm from "../../components/SearchCarForm/SearchCarForm";
-import { Loader } from "../../components/Loader/Loader.jsx";
+import LoadMoreButton from "../../components/LoadMoreButton/LoadMoreButton";
+import {
+  selectCars,
+  selectError,
+  selectIsLoading,
+  selectPage,
+  selectTotalPages,
+} from "../../redux/Cars/selector.js";
+// import {
+//   selectBrands,
+//   selectMaxMileage,
+//   selectMinMileage,
+//   selectRentalPrice,
+// } from "../../redux/FilterCars/selector.js";
+import { clearCars } from "../../redux/Cars/slice.js";
+import { formatMileage } from "../../service/format.js";
+import {toast} from "react-toastify";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
-  const cars = useSelector((state) => state.cars.items);
-  const loading = useSelector((state) => state.cars.loading);
-  const error = useSelector((state) => state.cars.error);
+  const cars = useSelector(selectCars);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const page = useSelector(selectPage);
+  const totalPages = useSelector(selectTotalPages);
+  // const brand = useSelector(selectBrands);
+  // const rentalPrice = useSelector(selectRentalPrice);
+  // const minMileage = useSelector(selectMinMileage);
+  // const maxMileage = useSelector(selectMaxMileage);
 
   const [filters, setFilters] = useState({
     brand: "",
     rentalPrice: "",
     minMileage: "",
     maxMileage: "",
-    limit: "8",
-    page: "1",
+    limit: 8,
+    page: 1,
   });
 
+  const filtersMemoized = useMemo(() => filters, [filters]);
+
   useEffect(() => {
-    dispatch(fetchCars(filters));
-  }, [dispatch, filters]);
+    dispatch(clearCars());
+    dispatch(fetchCars(filtersMemoized));
+  }, [dispatch, filtersMemoized]);
+
+const [firstLoad, setFirstLoad] = useState(true);
+
+useEffect(() => {
+  if (!isLoading && cars.length === 0 && !firstLoad) {
+    toast.info("No cars matching your criteria!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+    });
+  }
+}, [cars, isLoading]);
+
+useEffect(() => {
+  if (!isLoading) {
+    setFirstLoad(false);
+  }
+}, [isLoading]);
+
+ const handleLoadMore = () => {
+   setFilters((prevFilters) => ({
+     ...prevFilters,
+     page: prevFilters.page + 1,
+   }));
+ };
 
   const handleFilter = (newFilters) => {
     setFilters(newFilters);
   };
 
-  if (loading) return <Loader/>;
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <>
-      <Container>
-        <SearchCarForm onFilter={handleFilter} />
-        {cars.length > 0 ? <CarList cars={cars} /> : <p>No cars available.</p>}
-      </Container>
-    </>
+    <Container>
+      <SearchCarForm onFilter={handleFilter} />
+      {isLoading && page > 1 && <p>Loading more cars...</p>}
+      <CarList
+        cars={cars.map((car) => ({
+          ...car,
+          mileage: formatMileage(car.mileage),
+        }))}
+      />
+      {page < totalPages && <LoadMoreButton onClick={handleLoadMore} />}
+    </Container>
   );
 };
 

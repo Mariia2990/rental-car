@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
 import { Loader } from "./components/Loader/Loader";
 import { Header } from "./components/Header/Header";
 
@@ -25,7 +25,7 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-      <Toaster position="top-right" />
+      <ToastContainer position="top-right" />
     </>
   );
 };

@@ -6,6 +6,7 @@
 
 .carCard{
         width: 276px;
+        position: relative;
 }
 
 .carCard img {
@@ -17,7 +18,6 @@
 }
 
 .carList {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 32px;
