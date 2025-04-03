@@ -1,0 +1,18 @@
+.imgContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:40px;
+}
+
+.containerDetail{
+        display: flex;
+        gap:72px;
+            margin: 84px 120px;
+}
+
+.imgDetail{
+    border-radius: 19px;
+        width: 640px;
+        height: 512px;
+}

@@ -1,4 +1,5 @@
 .container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,8 +7,6 @@
     width: 100vw;
     margin: 0;
     padding: 0;
-    background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(5px);
 }
 
 .LoaderAbsolute {

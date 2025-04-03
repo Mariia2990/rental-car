@@ -21,6 +21,7 @@ import {
 import { clearCars } from "../../redux/Cars/slice.js";
 import { formatMileage } from "../../service/format.js";
 import {toast} from "react-toastify";
+import { Loader } from "../../components/Loader/Loader.jsx";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -88,14 +89,16 @@ useEffect(() => {
   return (
     <Container>
       <SearchCarForm onFilter={handleFilter} />
-      {isLoading && page > 1 && <p>Loading more cars...</p>}
+      {isLoading && page > 1 && <Loader absolute />}
       <CarList
         cars={cars.map((car) => ({
           ...car,
           mileage: formatMileage(car.mileage),
         }))}
       />
-      {page < totalPages && <LoadMoreButton onClick={handleLoadMore} />}
+      {page < totalPages && cars.length > 0 && (
+        <LoadMoreButton onClick={handleLoadMore} />
+      )}
     </Container>
   );
 };
