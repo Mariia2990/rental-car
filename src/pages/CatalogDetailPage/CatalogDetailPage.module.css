@@ -16,3 +16,103 @@
         width: 640px;
         height: 512px;
 }
+
+.containerInfoCar{
+
+}
+
+.titleInfo{
+font-family: var(--main-font);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    text-align: center;
+    color: #101828;
+    text-align: left;
+}
+
+.carId{
+    margin-left: 16px;
+    font-family: var(--main-font);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 125%;
+        color: #8D929A;
+}
+
+.location{
+    font-family: var(--main-font);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 125%;
+        color: #101828;
+}
+
+.icon {
+    margin-right: 2px;
+    fill: #101828;
+    width: 16px;
+    height: 16px;
+}
+
+.price{
+    font-family: var(--main-font);
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 133%;
+        color: #3470FF;
+        margin-bottom: 32px;
+        margin-top: 16px;
+}
+
+.infoDetail{
+    font-family: var(--main-font);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 125%;
+}
+
+
+.conditions{
+    margin-top: 20px;
+}
+
+.accessories{
+margin-top: 20px;
+}
+
+.specif{
+margin-top: 20px;
+}
+
+.rentCondTitle{
+    font-family: var(--main-font);
+    margin-top: 68px;
+    font-weight: 600;
+        font-size: 20px;
+        line-height: 120%;
+}
+
+.rentSpecif{
+    font-family: var(--main-font);
+        margin-top: 110px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 120%;
+}
+
+.rentAcces{
+        font-family: var(--main-font);
+            margin-top: 110px;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 120%;
+}
+
+.list{
+        font-family: var(--main-font);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 125%;
+        margin-bottom: 16px;
+}
