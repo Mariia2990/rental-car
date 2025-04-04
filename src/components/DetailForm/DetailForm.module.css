@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 16px;
 }
 
 .detailForm{
@@ -36,7 +37,7 @@ font-family: var(--main-font);
         height: 48px;
         background-color: #F7F7F7;
         border: none;
-        margin-bottom: 16px;
+        /* margin-bottom: 16px; */
         color: #8D929A;
 }
 
@@ -47,7 +48,7 @@ font-family: var(--main-font);
         height: 88px;
         background-color: #F7F7F7;
             border: none;
-            margin-bottom: 24px;
+            margin-bottom: auto;
 }
 
 .buttonSend{
@@ -79,4 +80,10 @@ font-weight: 600;
         font-size: 16px;
         line-height: 125%;
         color: #8D929A;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }

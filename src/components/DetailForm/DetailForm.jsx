@@ -1,60 +1,77 @@
-import { ErrorMessage, Field, Formik } from "formik";
-import css from "./DetailForm.module.css";
-import { Form } from "react-router-dom";
-import { useEffect, useId, useRef, useState } from "react";
-import * as Yup from "yup";
-import Calendar from "../Calendar/Calendar.jsx";
+import { ErrorMessage, Field, Formik } from 'formik';
+import css from './DetailForm.module.css';
+import { useEffect, useId, useRef, useState } from 'react';
+import * as Yup from 'yup';
+import Calendar from '../Calendar/Calendar.jsx';
+import axios from 'axios';
 
 export const DetailForm = () => {
-    const nameId = useId();
-    const emailId = useId();
-    const commentFieldId = useId();
+  const nameId = useId();
+  const emailId = useId();
+  const commentFieldId = useId();
 
-      const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-      const calendarRef = useRef(null);
-    const dateRef = useRef(null);
-    
-      const initialValues = {
-        name: "",
-        email: "",
-        bookingDate: null,
-        comment: "",
-    };
-    
-      const handleSubmit = (values, { setSubmitting }) => {
-        setSubmitting(true);
-        setSubmitting(false);
-    };
-    
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (
-          calendarRef.current &&
-          !calendarRef.current.contains(event.target) &&
-          !dateRef.current.contains(event.target)
-        ) {
-          setIsCalendarOpen(false);
-        }
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const calendarRef = useRef(null);
+  const dateRef = useRef(null);
+
+  const initialValues = {
+    name: '',
+    email: '',
+    bookingDate: null,
+    comment: '',
+  };
+
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    try {
+      setSubmitting(true);
+
+       await axios.post('https://car-rental-api.goit.global/', {
+         name: values.name,
+         email: values.email,
+         bookingDate: values.bookingDate,
+         comment: values.comment,
+       });
+
+      alert('Reservation successfully sent!');
+      resetForm();
+    } catch (error) {
+      console.error('Sending error:', error);
+      alert('An error occurred. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        calendarRef.current &&
+        !calendarRef.current.contains(event.target) &&
+        !dateRef.current.contains(event.target)
+      ) {
+        setIsCalendarOpen(false);
       }
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, []);
+    }
 
-    const BookingSchema = Yup.object({
-      name: Yup.string()
-        .min(3, "The name must be at least 2 characters long!")
-        .max(50, "The name must not exceed 50 characters!")
-        .required("Name is required"),
-      email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
-      bookingDate: Yup.date()
-        .required("Required booking date")
-        .min(new Date(), "Date can't be in the past"),
-      comment: Yup.string().max(256, "Comment is too long").optional(),
-    });
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const BookingSchema = Yup.object({
+    name: Yup.string()
+      .min(3, 'The name must be at least 2 characters long!')
+      .max(50, 'The name must not exceed 50 characters!')
+      .required('Name is required'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    bookingDate: Yup.date()
+      .required('Required booking date')
+      .min(new Date(), "Date can't be in the past"),
+    comment: Yup.string().max(256, 'Comment is too long').optional(),
+  });
 
   return (
     <div className={css.detailForm}>
@@ -82,6 +99,7 @@ export const DetailForm = () => {
                 className={css.error}
               />
             </div>
+
             <div>
               <Field
                 name="email"
@@ -95,6 +113,7 @@ export const DetailForm = () => {
                 className={css.error}
               />
             </div>
+
             <div className={css.datePickerContainer} ref={calendarRef}>
               <div
                 ref={dateRef}
@@ -128,6 +147,7 @@ export const DetailForm = () => {
                 className={css.error}
               />
             </div>
+
             <div>
               <Field
                 as="textarea"
@@ -142,13 +162,13 @@ export const DetailForm = () => {
                 className={css.error}
               />
             </div>
+
             <button
               type="submit"
               disabled={isSubmitting}
               className={css.buttonSend}
             >
-              Send
-              {isSubmitting}
+              {isSubmitting ? 'Sending...' : 'Send'}
             </button>
           </form>
         )}
