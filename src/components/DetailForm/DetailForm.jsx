@@ -3,6 +3,7 @@ import css from "./DetailForm.module.css";
 import { Form } from "react-router-dom";
 import { useEffect, useId, useRef, useState } from "react";
 import * as Yup from "yup";
+import Calendar from "../Calendar/Calendar.jsx";
 
 export const DetailForm = () => {
     const nameId = useId();

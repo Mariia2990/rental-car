@@ -80,9 +80,16 @@ useEffect(() => {
    }));
  };
 
-  const handleFilter = (newFilters) => {
-    setFilters(newFilters);
-  };
+const handleFilter = formValues => {
+  setFilters({
+    brand: formValues.brand,
+    rentalPrice: formValues.price,
+    minMileage: formValues.from,
+    maxMileage: formValues.to,
+    page: 1,
+    limit: 8,
+  });
+};
 
   if (error) return <div>Error: {error}</div>;
 
