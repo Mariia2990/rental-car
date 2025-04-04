@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../redux/Cars/operations.js";
 import CarList from "../../components/CarList/CarList";
@@ -12,12 +12,6 @@ import {
   selectPage,
   selectTotalPages,
 } from "../../redux/Cars/selector.js";
-// import {
-//   selectBrands,
-//   selectMaxMileage,
-//   selectMinMileage,
-//   selectRentalPrice,
-// } from "../../redux/FilterCars/selector.js";
 import { clearCars } from "../../redux/Cars/slice.js";
 import { formatMileage } from "../../service/format.js";
 import {toast} from "react-toastify";
@@ -30,10 +24,13 @@ const CatalogPage = () => {
   const error = useSelector(selectError);
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
-  // const brand = useSelector(selectBrands);
-  // const rentalPrice = useSelector(selectRentalPrice);
-  // const minMileage = useSelector(selectMinMileage);
-  // const maxMileage = useSelector(selectMaxMileage);
+const loaderRef = useRef(null);
+
+useEffect(() => {
+  if (isLoading && page > 1 && loaderRef.current) {
+    loaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}, [isLoading, page]);
 
   const [filters, setFilters] = useState({
     brand: "",
@@ -96,13 +93,20 @@ const handleFilter = formValues => {
   return (
     <Container>
       <SearchCarForm onFilter={handleFilter} />
-      {isLoading && page > 1 && <Loader absolute />}
+
       <CarList
-        cars={cars.map((car) => ({
+        cars={cars.map(car => ({
           ...car,
           mileage: formatMileage(car.mileage),
         }))}
       />
+
+      {isLoading && page > 1 && (
+        <div ref={loaderRef}>
+          <Loader />
+        </div>
+      )}
+
       {page < totalPages && cars.length > 0 && (
         <LoadMoreButton onClick={handleLoadMore} />
       )}
