@@ -4,7 +4,7 @@ import css from './DetailForm.module.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import toast from 'react-hot-toast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../../../src/styles/datepicker-custom.css';
 
 export const DetailForm = () => {
@@ -17,20 +17,29 @@ export const DetailForm = () => {
     comment: '',
   };
 
-  const validationSchema = Yup.object({
-    name: Yup.string()
-      .min(3, 'The name must be at least 3 characters long!')
-      .max(50, 'The name must not exceed 50 characters!')
-      .required('Name is required'),
-    email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
-    bookingDate: Yup.date()
-      .nullable()
-      .required('Booking date is required')
-      .min(new Date(), "Date can't be in the past"),
-    comment: Yup.string().max(256, 'Comment is too long'),
-  });
+  useEffect(() => {
+    const trianglePath = document.querySelector(
+      '.react-datepicker__triangle path',
+    );
+    if (trianglePath) {
+      trianglePath.setAttribute('d', 'M0 8 H16 L8 0 8 8'); 
+    }
+  }, []);
+
+const validationSchema = Yup.object({
+  name: Yup.string()
+    .min(3, 'The name must be at least 3 characters long!')
+    .max(50, 'The name must not exceed 50 characters!')
+    .required('Name is required'),
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('Email is required'),
+  detailDate: Yup.date() 
+    .nullable()
+    .required('Booking date is required')
+    .min(new Date(), "Date can't be in the past"),
+  comment: Yup.string().max(256, 'Comment is too long'),
+});
 
   const handleSubmit = (values, { resetForm }) => {
     toast.success('Successful car reservation!');

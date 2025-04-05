@@ -32,9 +32,7 @@
     background-color: #fff;
     border-bottom: 1px solid #3470FF;
     border-radius: 12px 12px 0 0;
-    width: 276px;
         height: 74px;
-        padding: 12px;
 }
 
 .react-datepicker__month-container{
@@ -52,8 +50,7 @@
 .react-datepicker-popper[data-placement^=top] .react-datepicker__triangle{
     fill: none;
     color:#3470FF ;
-    border: none;
-}
+    }
 
 .react-datepicker__current-month{
 font-family: var(--second-font);
@@ -71,5 +68,16 @@ font-size: 12px;
 line-height: 120%;
 text-align: center;
 color: #8D929A;
-margin-top: 12px;
+text-transform: uppercase;
+width: 36px;
+height: 14px;
+}
+
+.react-datepicker__day-names {
+    margin-top: 12px;
+}
+
+.react-datepicker__triangle path {
+    stroke-width: 1px;
+    stroke: #3470FF;
 }
