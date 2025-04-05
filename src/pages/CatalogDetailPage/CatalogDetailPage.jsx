@@ -78,7 +78,7 @@ const CatalogDetailPage = () => {
               <li key={index} className={css.list}>
                 <svg className={css.icon}>
                   <use
-                    href={'../../../public/img/sprite.svg#icon-check-circle'}
+                    href={'/img/sprite.svg#icon-check-circle'}
                   />
                 </svg>
                 {condition}
@@ -89,25 +89,25 @@ const CatalogDetailPage = () => {
           <ul className={css.specif}>
             <li className={css.list}>
               <svg className={css.icon}>
-                <use href={'../../../public/img/sprite.svg#icon-calendar'} />
+                <use href={'/img/sprite.svg#icon-calendar'} />
               </svg>
               Year: {safeYear}
             </li>
             <li className={css.list}>
               <svg className={css.icon}>
-                <use href={'../../../public/img/sprite.svg#icon-car'} />
+                <use href={'/img/sprite.svg#icon-car'} />
               </svg>
               Type: {car?.type || 'N/A'}
             </li>
             <li className={css.list}>
               <svg className={css.icon}>
-                <use href={'../../../public/img/sprite.svg#icon-fuel-pump'} />
+                <use href={'/img/sprite.svg#icon-fuel-pump'} />
               </svg>
               Fuel Consumption: {car?.fuelConsumption || 'N/A'}
             </li>
             <li className={css.list}>
               <svg className={css.icon}>
-                <use href={'../../../public/img/sprite.svg#icon-gear'} />
+                <use href={'/img/sprite.svg#icon-gear'} />
               </svg>
               Engine Size: {car?.engineSize || 'N/A'}
             </li>
@@ -118,7 +118,7 @@ const CatalogDetailPage = () => {
               <li key={index} className={css.list}>
                 <svg className={css.icon}>
                   <use
-                    href={'../../../public/img/sprite.svg#icon-check-circle'}
+                    href={'/img/sprite.svg#icon-check-circle'}
                   />
                 </svg>
                 {item}
