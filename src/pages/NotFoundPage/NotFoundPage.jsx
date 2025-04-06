@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import css from "./NotFoundPage.module.css";
 import { BiGhost } from "react-icons/bi";
-import { Logo } from "../../components/Logo/Logo";
 import Container from "../../components/Container/Container";
 
 export default function NotFoundPage() {

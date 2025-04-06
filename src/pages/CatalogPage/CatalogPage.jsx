@@ -1,21 +1,25 @@
-import React, { useEffect, useState, useMemo, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCars } from "../../redux/Cars/operations.js";
-import CarList from "../../components/CarList/CarList";
-import Container from "../../components/Container/Container";
-import SearchCarForm from "../../components/SearchCarForm/SearchCarForm";
-import LoadMoreButton from "../../components/LoadMoreButton/LoadMoreButton";
+import React, { useEffect, useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCars, fetchNextCars } from '../../redux/Cars/operations.js';
+
 import {
   selectCars,
   selectError,
   selectIsLoading,
   selectPage,
   selectTotalPages,
-} from "../../redux/Cars/selector.js";
-import { clearCars } from "../../redux/Cars/slice.js";
-import { formatMileage } from "../../service/format.js";
-import {toast} from "react-toastify";
-import { Loader } from "../../components/Loader/Loader.jsx";
+} from '../../redux/Cars/selector.js';
+
+import { clearCars, setPage } from '../../redux/Cars/slice.js';
+
+import Container from '../../components/Container/Container';
+import SearchCarForm from '../../components/SearchCarForm/SearchCarForm';
+import CarList from '../../components/CarList/CarList';
+import LoadMoreButton from '../../components/LoadMoreButton/LoadMoreButton';
+import { Loader } from '../../components/Loader/Loader.jsx';
+
+import { formatMileage } from '../../service/format.js';
+import toast from 'react-hot-toast';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -24,69 +28,76 @@ const CatalogPage = () => {
   const error = useSelector(selectError);
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
-const loaderRef = useRef(null);
 
-useEffect(() => {
-  if (isLoading && page > 1 && loaderRef.current) {
-    loaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-}, [isLoading, page]);
+  const loaderRef = useRef(null);
 
   const [filters, setFilters] = useState({
-    brand: "",
-    rentalPrice: "",
-    minMileage: "",
-    maxMileage: "",
+    brand: '',
+    rentalPrice: '',
+    minMileage: '',
+    maxMileage: '',
     limit: 8,
-    page: 1,
   });
 
-  const filtersMemoized = useMemo(() => filters, [filters]);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
     dispatch(clearCars());
-    dispatch(fetchCars(filtersMemoized));
-  }, [dispatch, filtersMemoized]);
+    dispatch(setPage(1));
+    dispatch(fetchCars({ ...filters, page: 1 }));
+  }, [dispatch, filters]);
 
-const [firstLoad, setFirstLoad] = useState(true);
+  useEffect(() => {
+    if (!isLoading && page >= totalPages && cars.length > 0 && !firstLoad) {
+      toast.success("You've reached the end of the catalog!", {
+        position: 'top-right',
+      });
+    }
+  }, [page, totalPages, cars.length, isLoading, firstLoad]);
 
-useEffect(() => {
-  if (!isLoading && cars.length === 0 && !firstLoad) {
-    toast.info("No cars matching your criteria!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "colored",
+  useEffect(() => {
+    if (!isLoading && cars.length === 0 && !firstLoad) {
+      toast.error('No cars matching your criteria!', {
+        position: 'top-right',
+      });
+    }
+  }, [cars, isLoading, firstLoad]);
+
+   useEffect(() => {
+    if (!isLoading) {
+      setFirstLoad(false);
+    }
+  }, [isLoading]);
+
+  // Додано плавний скролл
+  useEffect(() => {
+    if (!isLoading && page > 1 && loaderRef.current) {
+      loaderRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }, [cars.length]);
+
+  const handleLoadMore = () => {
+    const nextPage = page + 1;
+    dispatch(setPage(nextPage));
+    dispatch(fetchNextCars({ ...filters, page: nextPage }));
+  };
+
+  const handleFilter = formValues => {
+    setFilters({
+      brand: formValues.brand,
+      rentalPrice: formValues.price,
+      minMileage: formValues.from,
+      maxMileage: formValues.to,
+      limit: 8,
     });
+  };
+
+  if (isLoading && firstLoad) {
+    return <Loader />;
   }
-}, [cars, isLoading]);
-
-useEffect(() => {
-  if (!isLoading) {
-    setFirstLoad(false);
-  }
-}, [isLoading]);
-
- const handleLoadMore = () => {
-   setFilters((prevFilters) => ({
-     ...prevFilters,
-     page: prevFilters.page + 1,
-   }));
- };
-
-const handleFilter = formValues => {
-  setFilters({
-    brand: formValues.brand,
-    rentalPrice: formValues.price,
-    minMileage: formValues.from,
-    maxMileage: formValues.to,
-    page: 1,
-    limit: 8,
-  });
-};
 
   if (error) return <div>Error: {error}</div>;
 
@@ -101,14 +112,10 @@ const handleFilter = formValues => {
         }))}
       />
 
-      {isLoading && page > 1 && (
-        <div ref={loaderRef}>
-          <Loader />
-        </div>
-      )}
-
       {page < totalPages && cars.length > 0 && (
-        <LoadMoreButton onClick={handleLoadMore} />
+        <div ref={loaderRef}>
+          <LoadMoreButton onClick={handleLoadMore} isLoading={isLoading} />
+        </div>
       )}
     </Container>
   );
