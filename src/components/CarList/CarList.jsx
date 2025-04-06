@@ -42,35 +42,34 @@ const CarList = ({ cars }) => {
               <svg
                 width="16"
                 height="16"
-                className={`${css.icon} ${isFavorite ? css.active : ""}`}
+                className={`${css.icon} ${isFavorite ? css.active : ''}`}
               >
                 <use
-                  href={`${sprite}#${
-                    isFavorite ? "favorite" : "icon-heart"
-                  }`}
+                  href={`${sprite}#${isFavorite ? 'favorite' : 'icon-heart'}`}
                 />
               </svg>
             </div>
 
             <div className={css.carInfo}>
               <h3 className={css.carInfoTitle}>
-                <span className={css.brand}>{brand}</span>{" "}
-                <span className={css.model}>{model}</span>,{" "}
+                <span className={css.brand}>{brand}</span>{' '}
+                <span className={css.model}>{model}</span>,{' '}
                 <span className={css.year}>{year}</span>
               </h3>
               <span className={css.price}>${rentalPrice}</span>
             </div>
-
-            <p className={css.mileage}>
-              {locationPart} | {rentalCompany} | {type} | {formattedMileage}
-            </p>
-
+            <div className={css.mileage}>
+              <p>
+                {locationPart} | {rentalCompany} |
+              </p>
+              <p>
+                {type} | {formattedMileage}
+              </p>
+            </div>
             <NavLink
               to={`/catalog/${id}`}
               className={({ isActive }) =>
-                isActive
-                  ? `${css.readMoreBtn} ${css.active}`
-                  : css.readMoreBtn
+                isActive ? `${css.readMoreBtn} ${css.active}` : css.readMoreBtn
               }
             >
               Read more

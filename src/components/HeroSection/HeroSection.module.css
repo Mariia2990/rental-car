@@ -42,7 +42,7 @@ text-align: center;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    padding: 10px 79px;
+    /* padding: 10px 79px; */
     width: 176px;
     height: 34px;
     color: var(--main-text);
@@ -69,43 +69,36 @@ background-color: #0B44CD;
     gap: 12px;
 }
 
-@media only screen and (min-width: 768px) {
-    .container {
-            background-image: url('/img/hero-2x.jpg');
-            padding-top: 15px;
-            padding-left: 100px;
-            padding-right: 100px;
-        }
-    
-        .textWS {
-                font-size: 24px;
-                line-height: 133%;
-        }
-
-        .titleHP{
-            font-size: 50px;
-        }
-
-        .titleBox {
-        }
-
-        .btnHP {
-border-radius: 12px;
-    width: 276px;
-    height: 44px;
-        font-size: 16px;
-        line-height: 125%;
-        }
-
-        .btnBox {
+@media only screen and (min-width: 1440px) {
+   .btnBox {
             margin-top: 40px;
         }
 
-                .titleWSBox {
-                    gap: 16px;
-                }
-}
-
-@media only screen and (min-width: 1440px) {
-
-}
+                  .container {
+                      background-image: url('/img/hero-2x.jpg');
+                      padding-top: 15px;
+                      padding-left: 100px;
+                      padding-right: 100px;
+                  }
+        
+                  .textWS {
+                      font-size: 24px;
+                      line-height: 133%;
+                  }
+        
+                  .titleHP {
+                      font-size: 50px;
+                  }
+        
+                  .btnHP {
+                      border-radius: 12px;
+                      width: 276px;
+                      height: 44px;
+                      font-size: 16px;
+                      line-height: 125%;
+                  }
+        
+                  .titleWSBox {
+                      gap: 16px;
+                  }
+                  }

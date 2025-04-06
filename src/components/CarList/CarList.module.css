@@ -5,25 +5,29 @@
 }
 
 .carCard{
-        width: 276px;
+        width: 156px;
+        height: auto;
         position: relative;
+            display: flex;
+                flex-direction: column;
 }
 
 .carCard img {
     border-radius: 14px;
     overflow: hidden;
-    width: 276px;
-    height: 268px;
+    width: 100%;
+    height: auto;
     text-align: left;
+    object-fit: cover;
 }
 
 .carList {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    margin-top: 56px;
-    margin-left: 120px;
-    margin-right: 120px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 46px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 .textForCar{
@@ -50,8 +54,8 @@
 
 .favoriteIcon {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
     width: 30px;
     height: 30px;
 
@@ -66,17 +70,19 @@
 
 .readMoreBtn {
     display: block;
-    width: 276px;
-    height: 44px;
+    width: 156px;
+    height: 34px;
     background-color: #007bff;
     color: white;
     text-align: center;
     text-decoration: none;
-    padding-top: 12px;
+    padding: 12px;
     border-radius: 12px;
-    margin-top: 28px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: 600;
+        font-size: 12px;
+        line-height: 105%;
 }
 
 .readMoreBtn:hover {
@@ -98,23 +104,25 @@
 .price {
     /* font-weight: bold; */
     color: #101828;
-    margin: 0 10px 0 0;
     text-align: right;
+    font-weight: 500;
+        font-size: 16px;
+        line-height: 125%;
 }
 
 .carInfo{
     display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding-bottom: 8px;
-        margin-top: 16px;
+        align-items: flex-start;
+        margin-bottom: 8px;
+        margin-top: 10px;
 }
 
 
 .carInfoTitle {
  font-family: 'Manrope',
  sans-serif;
- font-size: 16px;
+ font-size: 12px;
  font-weight: 500;
  line-height: 125%;
  text-align: left;
@@ -124,8 +132,66 @@
 .mileage{
         color: #8d929a;
         font-weight: 400;
-            font-size: 12px;
+            font-size: 10px;
             line-height: 133%;
-            width: 276px;
-            height: 40px;
+            margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+.noCarsText {
+        text-align: center;
+        color: #6C717B;
+        padding: 20px;
+    }
+
+    .carCard {
+        width: 276px;
+        height: 424px;
+        position: relative;
+    }
+
+    .carCard img {
+        overflow: hidden;
+        height: 268px;
+    }
+
+    .carList {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+        margin-top: 56px;
+        padding-left: 120px;
+        padding-right: 120px;
+    }
+
+
+    .favoriteIcon {
+        top: 10px;
+        right: 10px;
+
+    }
+
+    .readMoreBtn {
+        width: 276px;
+        height: 44px;
+        padding-top: 12px;
+        cursor: pointer;
+        font-weight: 600;
+            font-size: 16px;
+            line-height: 125%;
+    }
+
+
+    .carInfoTitle {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 125%;
+    }
+
+    .mileage {
+        margin-bottom: 28px;
+        color: #8d929a;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 133%;
+    }
 }

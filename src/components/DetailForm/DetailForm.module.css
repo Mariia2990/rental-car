@@ -8,9 +8,9 @@
 .detailForm{
     border: 1px solid #DADDE1;
         border-radius: 10px;
-        padding: 32px;
-        width: 640px;
-        height: 488px;
+        padding: 16px;
+        width: 100%;
+        height: auto;
 }
 
 .titleForm{
@@ -30,26 +30,35 @@ font-family: var(--main-font);
         margin-bottom: 24px;
         margin-top: 8px;
 }
+
 .input{
     border-radius: 12px;
-        padding: 12px 20px;
-        width: 576px;
-        height: 48px;
+        padding: 10px 16px;
+        /* width: 576px;
+        height: 48px; */
         background-color: #F7F7F7;
         border: none;
         /* margin-bottom: 16px; */
         color: #8D929A;
 }
 
+.input::placeholder{
+    font-weight: 500;
+        font-size: 10px;
+        line-height: 105%;
+}
+
 
 .inputComment{
     border-radius: 12px;
-    padding: 12px 20px 56px 20px;
-        width: 576px;
-        height: 88px;
+        padding: 16px 20px 16px;
         background-color: #F7F7F7;
-            border: none;
-            margin-bottom: auto;
+        border: none;
+        margin-bottom: auto;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 105%;
+        width: 218px;
 }
 
 .buttonSend{
@@ -75,16 +84,112 @@ font-weight: 600;
     background-color: #0B44CD;
 }
 
-.input.inputComment :placeholder{
-    font-family: var(--main-font);
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 125%;
-        color: #8D929A;
-}
 
 .error {
     color: red;
     font-size: 12px;
     margin-top: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+.form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .detailForm {
+        border: 1px solid #DADDE1;
+        border-radius: 10px;
+        padding: 32px;
+        width: 640px;
+        height: 488px;
+    }
+
+    .titleForm {
+        font-family: var(--main-font);
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 120%;
+        color: #101828;
+    }
+
+    .subtitleForm {
+        font-family: var(--main-font);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 125%;
+        color: #8D929A;
+        margin-bottom: 24px;
+        margin-top: 8px;
+    }
+
+    .input {
+        border-radius: 12px;
+        padding: 12px 20px;
+        width: 576px;
+        height: 48px;
+        background-color: #F7F7F7;
+        border: none;
+        /* margin-bottom: 16px; */
+        color: #8D929A;
+    }
+
+        .input::placeholder {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 125%;
+        }
+
+
+    .inputComment {
+        border-radius: 12px;
+        padding: 12px 20px 56px 20px;
+        width: 576px;
+        height: 88px;
+        background-color: #F7F7F7;
+        border: none;
+        margin-bottom: auto;
+            font-weight: 500;
+                font-size: 16px;
+                line-height: 125%;
+    }
+
+    .buttonSend {
+        font-family: var(--main-font);
+        border-radius: 12px;
+        padding: 12px 51px;
+        width: 156px;
+        height: 44px;
+        background-color: #3470FF;
+        text-align: center;
+        display: inline-block;
+        transition: background-color .25s ease;
+        cursor: pointer;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 125%;
+        color: #fff;
+    }
+
+    .buttonSend:hover,
+    .buttonSend:focus {
+        background-color: #0B44CD;
+    }
+
+    .input.inputComment :placeholder {
+        font-family: var(--main-font);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 125%;
+        color: #8D929A;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
 }

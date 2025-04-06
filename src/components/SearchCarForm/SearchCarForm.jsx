@@ -132,9 +132,9 @@ useEffect(() => {
           className={css.formCar}
           style={{
             display: 'flex',
-            gap: '16px',
-            width: '924px',
-            height: '68px',
+            // gap: '16px',
+            // width: '924px',
+            // height: '68px',
           }}
         >
           <div className={css.labelWrapper}>

@@ -1,13 +1,16 @@
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 26px 120px;
+    padding: 16px 20px;
     background-color: #F2F4F7;
+    width: 100vw;
 }
 
-.buttons {
-    display: none;
-}
+  .buttons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+  }
 
 .btn {
     background-color: transparent;
@@ -24,6 +27,13 @@
 }
 
 @media only screen and (min-width: 768px) {
+.header {
+        display: flex;
+        justify-content: space-between;
+        padding: 26px 120px;
+        background-color: #F2F4F7;
+    }
+
     .buttons {
         display: flex;
         align-items: center;

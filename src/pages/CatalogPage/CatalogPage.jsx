@@ -25,6 +25,7 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   const cars = useSelector(selectCars);
   const isLoading = useSelector(selectIsLoading);
+  console.log('isLoading', isLoading);
   const error = useSelector(selectError);
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
@@ -117,6 +118,8 @@ const CatalogPage = () => {
           <LoadMoreButton onClick={handleLoadMore} isLoading={isLoading} />
         </div>
       )}
+
+      {isLoading && !firstLoad && <Loader />}
     </Container>
   );
 };

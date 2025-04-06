@@ -1,16 +1,19 @@
 .formCar{
 align-items: center;
-margin-top: 84px;
+margin-top: 44px;
 justify-content: center;
+gap: 8px;
+width: 100%;
+height: auto;
 }
 
 .label{
     font-family: var(--main-font);
         font-weight: 400;
-        font-size: 12px;
-        line-height: 133%;
+        font-size: 8px;
+        line-height: 103%;
         color: #8D929A;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
 }
 
 .labelWrapper {
@@ -28,13 +31,13 @@ justify-content: center;
 .field{
     border: none;
     border-radius: 12px;
-        padding: 12px 16px;
-        width: 204px;
-        height: 44px;
+        /* padding: 12px 16px; */
+        width: 64px;
+        height: 32px;
         background-color: #F7F7F7;
         font-weight: 500;
-            font-size: 16px;
-            line-height: 125%;
+            font-size: 10px;
+            line-height: 105%;
             cursor: pointer;
 }
 
@@ -65,9 +68,12 @@ justify-content: center;
     border-bottom: none;
     border-left:none;
     padding: 12px 16px;
-    width: 204px;
-    height: 44px;
+    width: 60px;
+    height: 32px;
     background-color: #F7F7F7;
+    font-weight: 500;
+        font-size: 10px;
+        line-height: 105%;
 }
 
 .rightInput {
@@ -76,26 +82,102 @@ justify-content: center;
     border-left: none;
     border: none;
     padding: 12px 16px;
-    width: 204px;
-    height: 44px;
+    width: 60px;
+    height: 32px;
     background-color: #F7F7F7;
+    font-weight: 500;
+        font-size: 10px;
+        line-height: 105%;
 }
 
 .btnForm{
     font-family: var(--main-font);
     background-color: #3470FF;
     border-radius: 12px;
-        padding: 12px 51px;
-        width: 156px;
-        height: 44px;
+        width: 104px;
+        height: 32px;
         font-weight: 600;
-            font-size: 16px;
-            line-height: 125%;
+            font-size: 12px;
+            line-height: 105%;
             color: var(--main-text);
-            margin-top: 22px;
+            margin-top: 12px;
+            padding: 10px;
 }
 
 .btnForm:hover,
 .btnForm:focus{
     background-color: #0B44CD;
+}
+
+@media only screen and (min-width: 768px) {
+.formCar {
+        margin-top: 84px;
+        gap: 16px;
+            width: 924px;
+            height: 68px;
+    }
+
+    .label {
+        font-size: 12px;
+        line-height: 133%;
+        margin-bottom: 8px;
+    }
+
+    .labelWrapper {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .field {
+        border: none;
+        border-radius: 12px;
+        padding: 12px 16px;
+        width: 204px;
+        height: 44px;
+        background-color: #F7F7F7;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 125%;
+        cursor: pointer;
+    }
+
+    .leftInput {
+        padding: 12px 16px;
+        width: 204px;
+        height: 44px;
+        font-weight: 500;
+            font-size: 16px;
+            line-height: 125%;
+    }
+
+    .rightInput {
+        padding: 12px 16px;
+        width: 204px;
+        height: 44px;
+        font-weight: 500;
+            font-size: 16px;
+            line-height: 125%;
+    }
+
+    .btnForm {
+        width: 156px;
+        height: 44px;
+        padding: 12px 51px;
+        width: 156px;
+        font-size: 16px;
+        line-height: 125%;
+        margin-top: 22px;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+
 }
