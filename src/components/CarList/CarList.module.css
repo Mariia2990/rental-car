@@ -52,6 +52,10 @@
     fill: #F2F4F7;
 }
 
+.iconBtn{
+    background-color: transparent;
+}
+
 .favoriteIcon {
     position: absolute;
     top: 5px;

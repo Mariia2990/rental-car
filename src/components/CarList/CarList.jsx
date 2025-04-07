@@ -39,6 +39,7 @@ const CarList = ({ cars }) => {
             <img src={img} alt={`${brand} ${model}`} className={css.img} />
 
             <div className={css.favoriteIcon} onClick={handleToggleFavorite}>
+              <button className={css.iconBtn}>
               <svg
                 width="16"
                 height="16"
@@ -47,7 +48,8 @@ const CarList = ({ cars }) => {
                 <use
                   href={`${sprite}#${isFavorite ? 'favorite' : 'icon-heart'}`}
                 />
-              </svg>
+                </svg>
+              </button>
             </div>
 
             <div className={css.carInfo}>

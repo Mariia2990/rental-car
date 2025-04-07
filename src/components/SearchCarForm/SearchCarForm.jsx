@@ -193,7 +193,6 @@ useEffect(() => {
               <Field
                 type="number"
                 name="from"
-                placeholder="From"
                 disabled={isLoading}
                 className={css.leftInput}
                 id="from"
@@ -204,13 +203,14 @@ useEffect(() => {
               <Field
                 type="number"
                 name="to"
-                placeholder="To"
                 disabled={isLoading}
                 className={css.rightInput}
                 id="to"
                 value={localMaxMileage}
                 onChange={e => setLocalMaxMileage(e.target.value)}
               />
+              <p className={css.textFrom}>From</p>
+              <p className={css.textTo}>To</p>
             </div>
           </div>
           <button
