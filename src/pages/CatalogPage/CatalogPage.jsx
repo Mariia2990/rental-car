@@ -25,7 +25,6 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   const cars = useSelector(selectCars);
   const isLoading = useSelector(selectIsLoading);
-  console.log('isLoading', isLoading);
   const error = useSelector(selectError);
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
