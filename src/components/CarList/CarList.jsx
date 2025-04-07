@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import css from "./CarList.module.css";
 import { selectFavorite } from "../../redux/Favourite/selectors";
 import { toggleFavorite } from "../../redux/Favourite/slice";
-import sprite from "../../../public/img/sprite.svg";
+import sprite from "/img/sprite.svg";
 
 const CarList = ({ cars }) => {
   const dispatch = useDispatch();
